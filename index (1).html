@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+<title>Baby Blessing Programme</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap">
+<style>
+/* Layout: a full-width confetti welcome sign, then the programme as a dotted ribbon of rounded pink cards */
+:root{
+  --bg:#fff4f8; --paper:#ffffff; --ink:#4a2238; --muted:#8a5a74;
+  --pink:#f0559a; --blush:#ffd6e7; --rose:#ff8fbf; --line:#f7c6dc;
+  --hero1:#ffe3ef; --hero2:#ffc2dc; --gold:#e8a33d;
+  --display:"Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --body:"Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#24121c; --paper:#331a28; --ink:#ffe8f2; --muted:#e0a9c4;
+  --pink:#ff7ab4; --blush:#4d2539; --rose:#ff9cc8; --line:#57304a;
+  --hero1:#3a1a2c; --hero2:#5a2443; --gold:#f2bb5f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#24121c; --paper:#331a28; --ink:#ffe8f2; --muted:#e0a9c4;
+  --pink:#ff7ab4; --blush:#4d2539; --rose:#ff9cc8; --line:#57304a;
+  --hero1:#3a1a2c; --hero2:#5a2443; --gold:#f2bb5f; color-scheme:dark}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+
+/* Welcome */
+.welcome{position:relative;overflow:hidden;background:radial-gradient(circle at 20% 15%,var(--hero2),transparent 55%),radial-gradient(circle at 85% 80%,var(--hero2),transparent 50%),var(--hero1);
+  min-height:min(92vh,760px);display:grid;place-items:center}
+#confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.welcome-inner{position:relative;z-index:1;display:grid;justify-items:center;gap:22px;text-align:center;padding-block:56px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.bubbles{display:flex;gap:10px}
+.bubbles span{width:14px;height:14px;border-radius:50%;background:var(--rose);animation:bob 2.4s ease-in-out infinite}
+.bubbles span:nth-child(2){background:var(--pink);animation-delay:.3s}
+.bubbles span:nth-child(3){background:var(--gold);animation-delay:.6s}
+@keyframes bob{50%{transform:translateY(-8px)}}
+
+.sign{position:relative;background:var(--paper);border:4px solid var(--pink);border-radius:28px;padding:30px 26px 28px;max-width:560px;width:100%;
+  box-shadow:0 10px 0 var(--rose),0 18px 40px rgba(240,85,154,.25);transform:rotate(-1.5deg)}
+.sign::before,.sign::after{content:"";position:absolute;top:-34px;width:2px;height:34px;background:var(--pink)}
+.sign::before{left:22%}.sign::after{right:22%}
+.sign .pre{font-family:var(--display);font-weight:600;font-size:clamp(18px,4.6vw,24px);letter-spacing:.12em;color:var(--muted);display:block}
+.sign .names{font-family:var(--display);font-weight:700;font-size:clamp(40px,11vw,68px);line-height:1.02;color:var(--pink);display:block;margin:6px 0;text-wrap:balance}
+.sign .amp{color:var(--gold)}
+.sign .post{font-family:var(--display);font-weight:600;font-size:clamp(20px,5.4vw,28px);letter-spacing:.14em;color:var(--ink);display:block}
+.tagline{margin:0;color:var(--muted);font-weight:600;max-width:40ch}
+.btn{font-family:var(--display);font-weight:600;font-size:17px;border:0;border-radius:999px;padding:13px 26px;background:var(--pink);color:#fff;
+  cursor:pointer;box-shadow:0 5px 0 var(--rose);text-decoration:none;display:inline-block;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* Programme */
+.wrap{max-width:640px;margin:0 auto;padding-block:48px 56px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.head{text-align:center;display:grid;gap:8px;margin-bottom:32px}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);font-weight:700}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,8vw,44px);line-height:1.1;margin:0;color:var(--ink)}
+.total{justify-self:center;font-size:13px;font-weight:600;color:var(--muted);background:var(--blush);border-radius:999px;padding:4px 14px;font-variant-numeric:tabular-nums}
+ol{list-style:none;margin:0;padding:0;position:relative;display:grid;gap:14px}
+ol::before{content:"";position:absolute;left:21px;top:22px;bottom:22px;border-left:3px dotted var(--rose)}
+li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.n{position:relative;width:44px;height:44px;border-radius:50%;background:var(--blush);color:var(--pink);
+  display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:19px;border:2px solid var(--rose)}
+.card{background:var(--paper);border:2px solid var(--line);border-radius:22px;padding:16px 18px;min-width:0}
+.row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;align-items:baseline}
+h2{font-family:var(--display);font-weight:600;font-size:20px;margin:0;line-height:1.3}
+.dur{font-size:13px;font-weight:700;color:var(--pink);background:var(--blush);border-radius:999px;padding:2px 10px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.card p{margin:8px 0 0;color:var(--muted)}
+li.key .card{border-color:var(--pink);background:linear-gradient(var(--paper),var(--paper)) padding-box}
+li.key .n{background:var(--pink);color:#fff;border-color:var(--pink)}
+footer{text-align:center;margin-top:36px;color:var(--muted);font-weight:600}
+footer .heart{color:var(--pink)}
+
+@media (prefers-reduced-motion: reduce){.bubbles span{animation:none}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<section class="welcome" aria-label="Welcome">
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <div class="welcome-inner">
+    <div class="bubbles" aria-hidden="true"><span></span><span></span><span></span></div>
+    <h1 class="sign" style="margin:34px 0 0">
+      <span class="pre">LET’S CELEBRATE</span>
+      <span class="names">KHANYA <span class="amp">&amp;</span> LUSANDA</span>
+      <span class="post">TOGETHER!</span>
+    </h1>
+    <p class="tagline">A gathering of love, gratitude and prayer for the couple and their little girl.</p>
+    <a class="btn" href="#programme" id="go">See the programme ↓</a>
+  </div>
+</section>
+
+<main class="wrap" id="programme">
+  <div class="head">
+    <div class="eyebrow">Order of the day</div>
+    <h2 style="font-family:var(--display);font-weight:700;font-size:clamp(32px,8vw,44px);margin:0">Programme</h2>
+    <span class="total">About 1 h 25 min – 1 h 45 min</span>
+  </div>
+
+  <ol>
+    <li><span class="n">1</span><div class="card"><div class="row"><h2>Arrival &amp; Settling In</h2><span class="dur">10 min</span></div>
+      <p>Guests arrive, find their seats, and place any remaining contributions in the designated collection area. Everyone is welcome to mingle, chat, and order food and drinks.</p></div></li>
+    <li><span class="n">2</span><div class="card"><div class="row"><h2>Welcome &amp; Opening Prayer</h2><span class="dur">5 min</span></div>
+      <p>The host welcomes everyone, briefly shares the purpose of the gathering, and expresses heartfelt gratitude to everyone who contributed, regardless of the amount. The gathering opens with a prayer for the couple and their little one.</p></div></li>
+    <li><span class="n">3</span><div class="card"><div class="row"><h2>Food, Drinks &amp; Fellowship</h2><span class="dur">30–40 min</span></div>
+      <p>Guests enjoy their meals, refreshments, and one another’s company in a relaxed and welcoming atmosphere.</p></div></li>
+    <li><span class="n">4</span><div class="card"><div class="row"><h2>Fun Activity</h2><span class="dur">10 min</span></div>
+      <p>A light-hearted activity to bring everyone together, create laughter, and make the gathering memorable.</p></div></li>
+    <li class="key"><span class="n">5</span><div class="card"><div class="row"><h2>Collection Handover</h2><span class="dur">15–20 min</span></div>
+      <p>The couple is invited to the centre of the gathering. The host shares a few heartfelt words about the purpose of the collection before formally handing over the baby clothes, vouchers, monetary contributions, and other gifts. The couple is given an opportunity to share a few words of appreciation.</p></div></li>
+    <li><span class="n">6</span><div class="card"><div class="row"><h2>Words of Encouragement &amp; Prayer</h2><span class="dur">5–10 min</span></div>
+      <p>Guests share words of love, encouragement, and well wishes for the couple and their little one. A closing prayer is offered for their family, health, happiness, and journey ahead.</p></div></li>
+    <li><span class="n">7</span><div class="card"><div class="row"><h2>Closing &amp; Appreciation</h2><span class="dur">10 min</span></div>
+      <p>The host thanks everyone for their presence, generosity, love, and support. Guests are invited to enjoy any remaining refreshments, take photos, and say their goodbyes.</p></div></li>
+  </ol>
+
+  <footer><span class="heart">♥</span> Thank you for being part of this special day.</footer>
+</main>
+
+<script>
+(function(){
+  const c=document.getElementById('confetti'), x=c.getContext('2d');
+  const colors=['#f0559a','#ff8fbf','#ffc2dc','#e8a33d','#ffffff','#c86bfa','#ffd166'];
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W,H,dpr,pieces=[];
+  function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
+  function make(n,burst){for(let i=0;i<n;i++){pieces.push({
+    x:burst?W/2+(Math.random()-.5)*80:Math.random()*W,
+    y:burst?H*0.45:Math.random()*H-H,
+    vx:burst?(Math.random()-.5)*9:(Math.random()-.5)*0.6,
+    vy:burst?-Math.random()*9-3:Math.random()*1.2+0.8,
+    w:Math.random()*8+5,h:Math.random()*5+4,r:Math.random()*6.28,vr:(Math.random()-.5)*0.2,
+    col:colors[(Math.random()*colors.length)|0],round:Math.random()<.35,burst})}}
+  function draw(p){x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.col;
+    if(p.round){x.beginPath();x.arc(0,0,p.h/1.6,0,6.28);x.fill()}else x.fillRect(-p.w/2,-p.h/2,p.w,p.h);x.restore()}
+  function tick(){x.clearRect(0,0,W,H);
+    for(const p of pieces){if(p.burst){p.vy+=0.25;p.vx*=0.99}p.x+=p.vx+Math.sin(p.y/40)*0.4;p.y+=p.vy;p.r+=p.vr;
+      if(!p.burst&&p.y>H+10){p.y=-10;p.x=Math.random()*W}draw(p)}
+    pieces=pieces.filter(p=>!(p.burst&&p.y>H+20));requestAnimationFrame(tick)}
+  size();window.addEventListener('resize',size);
+  const count=Math.round(Math.min(140,W/6));
+  if(reduce){make(count,false);pieces.forEach(p=>p.y=Math.random()*H);pieces.forEach(draw)}
+  else{make(count,false);make(90,true);tick();
+    document.querySelector('.sign').addEventListener('click',()=>make(80,true))}
+})();
+</script>
+
+</body>
+</html>
